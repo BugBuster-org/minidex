@@ -10,9 +10,19 @@ export function App() {
   const [favorites, setFavorites] = useState<Favorite[]>([]);
 
   return (
-    <div className="mx-auto max-w-5xl p-4 md:p-6">
-      <h1 className="mb-6 text-3xl font-bold tracking-tight">minidex</h1>
-      <main className="grid gap-6 md:grid-cols-[1fr_16rem]">
+    <div className="min-h-screen">
+      <header className="bg-gradient-to-br from-primary to-red-800 text-primary-foreground shadow-lg">
+        <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-5 md:px-6">
+          <span className="flex size-10 items-center justify-center rounded-full border-4 border-white bg-white/20">
+            <span className="size-3 rounded-full bg-white" />
+          </span>
+          <h1 className="text-3xl font-extrabold tracking-tight">minidex</h1>
+          <p className="ml-auto hidden text-sm text-primary-foreground/80 sm:block">
+            Your pocket Pokédex
+          </p>
+        </div>
+      </header>
+      <main className="mx-auto grid max-w-5xl gap-6 p-4 md:grid-cols-[1fr_18rem] md:p-6">
         {selected ? (
           <PokemonDetail
             name={selected}
