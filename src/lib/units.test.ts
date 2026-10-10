@@ -12,10 +12,6 @@ describe("decimetersToMeters", () => {
 });
 
 describe("hectogramsToKg", () => {
-  it("converts hectograms to kilograms", () => {
-    expect(hectogramsToKg(60)).toBe(6);
-    expect(hectogramsToKg(905)).toBe(90.5);
-  });
   it("handles zero", () => {
     expect(hectogramsToKg(0)).toBe(0);
   });

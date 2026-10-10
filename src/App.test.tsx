@@ -5,7 +5,7 @@ import { App } from "./App";
 describe("App", () => {
   it("favorites a pokemon from the detail view and removes it again", async () => {
     render(<App />);
-    fireEvent.click(await screen.findByText("#001 bulbasaur"));
+    fireEvent.click(await screen.findByRole("button", { name: / bulbasaur$/ }));
     fireEvent.click(await screen.findByText("Add to favorites"));
     expect(
       screen.getByLabelText("Remove bulbasaur from favorites"),
