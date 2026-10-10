@@ -24,8 +24,8 @@ describe("Favorites", () => {
         onRemove={onRemove}
       />,
     );
-    expect(screen.getByText("#025 pikachu")).toBeTruthy();
-    expect(screen.getByText("#006 charizard")).toBeTruthy();
+    expect(screen.getByText(/ pikachu$/)).toBeTruthy();
+    expect(screen.getByText(/ charizard$/)).toBeTruthy();
     fireEvent.click(screen.getByLabelText("Remove charizard from favorites"));
     expect(onRemove).toHaveBeenCalledWith(6);
   });
@@ -39,7 +39,7 @@ describe("Favorites", () => {
         onRemove={() => {}}
       />,
     );
-    fireEvent.click(screen.getByText("#025 pikachu"));
+    fireEvent.click(screen.getByText(/ pikachu$/));
     expect(onSelect).toHaveBeenCalledWith("pikachu");
   });
 });

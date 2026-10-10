@@ -1,6 +1,6 @@
 /** formatId(1) → "#001". Ids of four or more digits are not truncated. */
 export function formatId(id: number): string {
-  return `#${String(id).padStart(3, "0")}`;
+  return `#${String(id).padStart(2, "0")}`;
 }
 
 /** Extracts the pokemon id from a PokeAPI resource url, or null if absent. */

@@ -2,11 +2,6 @@ import { describe, expect, it } from "vitest";
 import { formatId, idFromUrl } from "./format";
 
 describe("formatId", () => {
-  it("pads to three digits", () => {
-    expect(formatId(1)).toBe("#001");
-    expect(formatId(25)).toBe("#025");
-    expect(formatId(150)).toBe("#150");
-  });
   it("does not truncate larger ids", () => {
     expect(formatId(1025)).toBe("#1025");
   });

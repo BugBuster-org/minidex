@@ -9,6 +9,15 @@ total) and in-memory favorites.
 
 Search and type filter apply to the currently loaded page. Favorites are not persisted.
 
+## Deliberate bugs
+
+Three visual bugs are planted on purpose for the remediation bot. They are also listed in
+the "Known bugs" card in the app's sidebar.
+
+1. Weight is 10x too small (Pikachu shows 0.6 kg, should be 6 kg).
+2. Base-stat bars in the detail view are always full width.
+3. Ids are padded to two digits (`#01 bulbasaur`, should be `#001`).
+
 ## Run
 
 Tool versions are managed with [mise](https://mise.jdx.dev) (`mise.toml`: Node 24, pnpm).
