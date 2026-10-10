@@ -12,7 +12,7 @@ export function App() {
   return (
     <div className="min-h-screen">
       <header className="bg-gradient-to-br from-primary to-red-800 text-primary-foreground shadow-lg">
-        <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-5 md:px-6">
+        <div className="mx-auto flex max-w-screen-2xl items-center gap-3 px-4 py-5 md:px-6">
           <span className="flex size-10 items-center justify-center rounded-full border-4 border-white bg-white/20">
             <span className="size-3 rounded-full bg-white" />
           </span>
@@ -22,7 +22,7 @@ export function App() {
           </p>
         </div>
       </header>
-      <main className="mx-auto grid max-w-5xl gap-6 p-4 md:grid-cols-[1fr_18rem] md:p-6">
+      <main className="mx-auto grid max-w-screen-2xl gap-6 p-4 md:grid-cols-[1fr_20rem] md:p-6">
         {selected ? (
           <PokemonDetail
             name={selected}
