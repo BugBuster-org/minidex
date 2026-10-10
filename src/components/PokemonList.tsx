@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { fetchPokemon, fetchPokemonPage } from "../api/pokeapi";
 import type { PokemonSummary } from "../api/types";
 import { formatId, idFromUrl } from "../lib/format";
@@ -69,18 +72,24 @@ export function PokemonList({ onSelect }: Props) {
   }, [page]);
 
   if (error?.page === page) {
-    return <p role="alert">Could not load pokemon: {error.message}</p>;
+    return (
+      <p role="alert" className="text-destructive">
+        Could not load pokemon: {error.message}
+      </p>
+    );
   }
-  if (data?.page !== page) return <p>Loading…</p>;
+  if (data?.page !== page)
+    return <p className="text-muted-foreground">Loading…</p>;
 
   const visible = filterByType(filterByName(data.items, query), type);
   const pages = totalPages(data.count);
 
   return (
     <section>
-      <h2>Pokémon</h2>
-      <div className="filters">
-        <input
+      <h2 className="mb-3 text-xl font-semibold">Pokémon</h2>
+      <div className="mb-4 flex flex-wrap gap-2">
+        <Input
+          className="max-w-xs"
           type="search"
           aria-label="Search by name"
           placeholder="Search by name"
@@ -88,6 +97,7 @@ export function PokemonList({ onSelect }: Props) {
           onChange={(e) => setQuery(e.target.value)}
         />
         <select
+          className="h-8 rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           aria-label="Filter by type"
           value={type}
           onChange={(e) => setType(e.target.value)}
@@ -101,36 +111,43 @@ export function PokemonList({ onSelect }: Props) {
         </select>
       </div>
       {visible.length === 0 ? (
-        <p>No pokémon match.</p>
+        <p className="text-muted-foreground">No pokémon match.</p>
       ) : (
-        <ul className="pokemon-list">
+        <ul className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-2">
           {visible.map((p) => (
             <li key={p.id}>
-              <button type="button" onClick={() => onSelect(p.name)}>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full justify-start capitalize"
+                onClick={() => onSelect(p.name)}
+              >
                 {formatId(p.id)} {p.name}
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
       )}
-      <nav className="pagination">
-        <button
+      <nav className="mt-4 flex items-center justify-between gap-2">
+        <Button
           type="button"
+          variant="outline"
           disabled={!hasPrevPage(page)}
           onClick={() => setPage(page - 1)}
         >
           Previous
-        </button>
-        <span>
+        </Button>
+        <Badge variant="secondary">
           Page {page} of {pages}
-        </span>
-        <button
+        </Badge>
+        <Button
           type="button"
+          variant="outline"
           disabled={!hasNextPage(page, data.count)}
           onClick={() => setPage(page + 1)}
         >
           Next
-        </button>
+        </Button>
       </nav>
     </section>
   );

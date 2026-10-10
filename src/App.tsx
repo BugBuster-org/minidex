@@ -4,16 +4,15 @@ import { Favorites } from "./components/Favorites";
 import { PokemonDetail } from "./components/PokemonDetail";
 import { PokemonList } from "./components/PokemonList";
 import { removeFavorite, toggleFavorite } from "./lib/favorites";
-import "./App.css";
 
 export function App() {
   const [selected, setSelected] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Favorite[]>([]);
 
   return (
-    <div className="app">
-      <h1>minidex</h1>
-      <main>
+    <div className="mx-auto max-w-5xl p-4 md:p-6">
+      <h1 className="mb-6 text-3xl font-bold tracking-tight">minidex</h1>
+      <main className="grid gap-6 md:grid-cols-[1fr_16rem]">
         {selected ? (
           <PokemonDetail
             name={selected}
