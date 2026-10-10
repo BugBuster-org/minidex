@@ -1,6 +1,6 @@
 # minidex: agent conventions
 
-Small Pokédex app (Vite + React + TypeScript strict, Vitest, MSW). Keep changes minimal.
+Small Pokédex app (Vite + React + TypeScript strict, Tailwind CSS, shadcn/ui, Vitest, MSW). No router, no state library. Keep changes minimal.
 
 ## Conventions
 
@@ -11,7 +11,8 @@ Small Pokédex app (Vite + React + TypeScript strict, Vitest, MSW). Keep changes
   Need new data? Add a trimmed JSON fixture in `src/fixtures/` and a handler in
   `src/test/handlers.ts`; never hit the real PokéAPI.
 - Domain types are in `src/api/types.ts` and match the fixtures.
-- Dependencies are managed with mise (`mise.toml`) and pnpm. Do not add dependencies.
+- Tools are managed with mise (`mise.toml`); packages with pnpm. UI uses Tailwind classes
+  and shadcn/ui components; no plain CSS files.
 
 ## Commands
 
@@ -23,3 +24,4 @@ Small Pokédex app (Vite + React + TypeScript strict, Vitest, MSW). Keep changes
 
 - `src/auth/`
 - `.github/`
+- `src/components/ui/`: generated shadcn code. Do not edit it, do not test it.

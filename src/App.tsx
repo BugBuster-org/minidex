@@ -4,16 +4,25 @@ import { Favorites } from "./components/Favorites";
 import { PokemonDetail } from "./components/PokemonDetail";
 import { PokemonList } from "./components/PokemonList";
 import { removeFavorite, toggleFavorite } from "./lib/favorites";
-import "./App.css";
 
 export function App() {
   const [selected, setSelected] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Favorite[]>([]);
 
   return (
-    <div className="app">
-      <h1>minidex</h1>
-      <main>
+    <div className="min-h-screen">
+      <header className="bg-gradient-to-br from-primary to-red-800 text-primary-foreground shadow-lg">
+        <div className="mx-auto flex max-w-screen-2xl items-center gap-3 px-4 py-5 md:px-6">
+          <span className="flex size-10 items-center justify-center rounded-full border-4 border-white bg-white/20">
+            <span className="size-3 rounded-full bg-white" />
+          </span>
+          <h1 className="text-3xl font-extrabold tracking-tight">minidex</h1>
+          <p className="ml-auto hidden text-sm text-primary-foreground/80 sm:block">
+            Your pocket Pokédex
+          </p>
+        </div>
+      </header>
+      <main className="mx-auto grid max-w-screen-2xl gap-6 p-4 md:grid-cols-[1fr_20rem] md:p-6">
         {selected ? (
           <PokemonDetail
             name={selected}
