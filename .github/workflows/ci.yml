@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      test_filter:
+        description: "Test file path or test name to run (empty runs all tests)"
+        required: false
+        default: ""
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - name: Test
+        env:
+          TEST_FILTER: ${{ inputs.test_filter }}
+        run: |
+          if [ -z "$TEST_FILTER" ]; then
+            pnpm test:ci
+          elif [ -f "$TEST_FILTER" ]; then
+            pnpm test:ci "$TEST_FILTER"
+          else
+            pnpm test:ci -t "$TEST_FILTER"
+          fi
+      - name: Upload JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit
+          path: junit.xml
+          if-no-files-found: warn
