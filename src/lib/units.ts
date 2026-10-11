@@ -5,5 +5,5 @@ export function decimetersToMeters(dm: number): number {
 
 /** PokeAPI weights are in hectograms. */
 export function hectogramsToKg(hg: number): number {
-  return hg / 100;
+  return hg / 10;
 }
