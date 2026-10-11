@@ -114,7 +114,7 @@ export function PokemonDetail({
                           <div
                             className="h-full rounded-full bg-primary"
                             style={{
-                              width: `${Math.min(100, (s.base_stat / 15) * 100)}%`,
+                              width: `${Math.min(100, (s.base_stat / 255) * 100)}%`,
                             }}
                           />
                         </div>
