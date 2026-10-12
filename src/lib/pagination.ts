@@ -18,5 +18,5 @@ export function hasNextPage(
   count: number,
   pageSize = PAGE_SIZE,
 ): boolean {
-  return page < totalPages(count, pageSize);
+  return page <= totalPages(count, pageSize);
 }

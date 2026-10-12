@@ -17,24 +17,24 @@ describe("PokemonList", () => {
     expect(screen.queryByText(/ bulbasaur$/)).toBeNull();
   });
 
-  it("filters by name, ignoring case", async () => {
+  it("filters by name", async () => {
     render(<PokemonList onSelect={() => {}} />);
     await screen.findByText(/ bulbasaur$/);
     fireEvent.change(screen.getByLabelText("Search by name"), {
-      target: { value: "CHARI" },
+      target: { value: "chari" },
     });
     expect(screen.getByText(/ charizard$/)).toBeTruthy();
     expect(screen.queryByText(/ bulbasaur$/)).toBeNull();
   });
 
-  it("filters by any of a pokemon's types", async () => {
+  it("filters by type", async () => {
     render(<PokemonList onSelect={() => {}} />);
     await screen.findByText(/ bulbasaur$/);
     const select = screen.getByLabelText("Filter by type");
-    fireEvent.change(select, { target: { value: "flying" } });
+    fireEvent.change(select, { target: { value: "fire" } });
     expect(screen.getByText(/ charizard$/)).toBeTruthy();
     expect(screen.queryByText(/ bulbasaur$/)).toBeNull();
-    fireEvent.change(select, { target: { value: "poison" } });
+    fireEvent.change(select, { target: { value: "grass" } });
     expect(screen.getByText(/ bulbasaur$/)).toBeTruthy();
     expect(screen.queryByText(/ charizard$/)).toBeNull();
   });

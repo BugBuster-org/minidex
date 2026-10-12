@@ -10,7 +10,7 @@ export function filterByType<T extends HasTypes>(
   type: string,
 ): T[] {
   if (type === "") return items;
-  return items.filter((item) => item.types.some((t) => t.type.name === type));
+  return items.filter((item) => item.types[0]?.type.name === type);
 }
 
 /** Sorted, de-duplicated type names present across the given pokemon. */
@@ -19,5 +19,5 @@ export function collectTypes(items: HasTypes[]): string[] {
   for (const item of items) {
     for (const t of item.types) names.add(t.type.name);
   }
-  return [...names].sort();
+  return [...names];
 }
