@@ -12,10 +12,6 @@ describe("filterByName", () => {
     expect(filterByName(items, "char")).toEqual([{ name: "charizard" }]);
     expect(filterByName(items, "a")).toHaveLength(3);
   });
-  it("is case-insensitive in both directions", () => {
-    expect(filterByName(items, "PIKA")).toEqual([{ name: "pikachu" }]);
-    expect(filterByName([{ name: "Mr-Mime" }], "mr-m")).toHaveLength(1);
-  });
   it("ignores surrounding whitespace", () => {
     expect(filterByName(items, "  pika ")).toEqual([{ name: "pikachu" }]);
   });

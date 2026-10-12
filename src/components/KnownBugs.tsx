@@ -11,16 +11,28 @@ const BUGS = [
     actual: "Pikachu weighs 0.6 kg",
   },
   {
-    title: "Stat bars are always full",
-    where: "Detail view, base stats",
-    expected: "Bar length is proportional to the stat",
-    actual: "Every bar fills the whole track",
+    title: "Next page is enabled on the last page",
+    where: "List, pagination",
+    expected: "Next is disabled on the last page",
+    actual: "Next stays enabled and opens an empty page",
   },
   {
-    title: "Ids are padded to two digits",
-    where: "List, detail and favorites",
-    expected: "#001 bulbasaur",
-    actual: "#01 bulbasaur",
+    title: "Search ignores uppercase queries",
+    where: "List, name search",
+    expected: "PIKA finds pikachu",
+    actual: "PIKA finds nothing",
+  },
+  {
+    title: "Type filter ignores the second type",
+    where: "List, type filter",
+    expected: "Flying shows charizard",
+    actual: "Flying hides charizard",
+  },
+  {
+    title: "Type filter options are not sorted",
+    where: "List, type filter dropdown",
+    expected: "Types in alphabetical order",
+    actual: "Types in the order they first appear",
   },
 ];
 

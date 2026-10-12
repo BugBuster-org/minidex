@@ -11,12 +11,16 @@ Search and type filter apply to the currently loaded page. Favorites are not per
 
 ## Deliberate bugs
 
-Three visual bugs are planted on purpose for the remediation bot. They are also listed in
-the "Known bugs" card in the app's sidebar.
+Visual bugs are planted on purpose for the remediation bot. The open ones are also listed
+in the "Known bugs" card in the app's sidebar.
 
 1. Weight is 10x too small (Pikachu shows 0.6 kg, should be 6 kg).
-2. Base-stat bars in the detail view are always full width.
-3. Ids are padded to two digits (`#01 bulbasaur`, should be `#001`).
+2. ~~Base-stat bars in the detail view are always full width.~~ Fixed by the bot (PR #7).
+3. ~~Ids are padded to two digits (`#01 bulbasaur`, should be `#001`).~~ Fixed by the bot (PR #6).
+4. "Next" stays enabled on the last page of the list and opens an empty page.
+5. Name search ignores uppercase queries (`PIKA` finds nothing, should find pikachu).
+6. The type filter only matches a pokémon's first type (`flying` hides charizard).
+7. The type filter dropdown is not sorted alphabetically.
 
 ## Run
 

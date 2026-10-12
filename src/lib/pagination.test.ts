@@ -30,8 +30,5 @@ describe("pagination", () => {
   });
   it("knows when there is a next page", () => {
     expect(hasNextPage(1, 40)).toBe(true);
-    expect(hasNextPage(2, 40)).toBe(false);
-    expect(hasNextPage(1, 20)).toBe(false);
-    expect(hasNextPage(1, 0)).toBe(false);
   });
 });
